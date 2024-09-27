@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="Imagenes/logo_1.ico" type="image/x-icon" />
+
+    <title>ITEL</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Font Awesome para los íconos -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- Fuente Poppins de Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aterreador&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Incluye SweetAlert2 CSS y JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .card-img-top {
+    width: 100%; /* Asegúrate de que esto esté establecido */
+    height: auto; /* Cambiar a auto para mantener la proporción */
+}
+
+      .carousel-caption h5 {
+        font-family: "Aterreador", cursive; /* Asegúrate de que el nombre sea correcto */
+        font-size: 26px; /* Ajusta el tamaño según lo necesites */
+        color: white; /* Cambia el color si es necesario */
+      }
+      .carousel-caption p {
+        font-size: 16px; /* Tamaño de la descripción */
+        color: white; /* Color de la descripción */
+      }
+      .custom-navbar {
+        background-color: #1f1c1a !important;
+        padding-left: 100px; /* Ajusta la distancia desde el lateral izquierdo */
+        padding-right: 100px; /* Ajusta la distancia desde el lateral derecho */
+      }
+      .custom-footer {
+        position: relative;
+        background-color: #1f1c1a; /* Color de fondo para el footer */
+      }
+      #content {
+        margin-top: 70px; /* Ajusta este valor según la altura de tu header */
+      }
+      .carousel-inner img {
+        height: 400px; /* Establece una altura fija */
+        object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+        transition: transform 0.5s ease; /* Transición suave para el cambio de imagen */
+      }
+
+      /* Ajustes para los botones del carrusel con iconos */
+      .custom-control {
+        background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: yellow; /* Color de los iconos */
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+      }
+
+      .carousel-control-prev {
+        left: 10px; /* Posición del botón izquierdo */
+      }
+
+      .carousel-control-next {
+        right: 10px; /* Posición del botón derecho */
+      }
+
+      /* Iconos de Font Awesome en amarillo */
+      .custom-icon i {
+        font-size: 30px; /* Tamaño del icono */
+        color: #3b5998; /* Color del icono */
+        line-height: 1; /* Asegura que el icono no tenga espacio adicional alrededor */
+      }
+
+      /* Mejora visual al pasar el ratón */
+      .custom-control:hover {
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.7
+        ); /* Cambio de fondo al pasar el mouse */
+        transform: scale(1.1);
+      }
+      .square {
+        width: 80px;
+        height: 80px;
+        border-radius: 15px; /* Bordes redondeados */
+        background-color: #1f1c1a; /* Color de fondo */
+        color: white; /* Color de texto por defecto */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      /* Estilos para los colores de texto */
+      .red {
+        color: red;
+      }
+      .blue {
+        color: blue;
+      }
+      .green {
+        color: green;
+      }
+      .yellow {
+        color: yellow;
+      }
+      .orange {
+        color: orange;
+      }
+      .purple {
+        color: purple;
+      }
+      .btn-default {
+    background-color: #6a9997;
+    color: white;
+    border: none;
+}
+
+.btn-default:hover {
+    background-color: #e1306c;
+    color: white;
+}
+.custom-link {
+            color: #2a2928;
+            text-decoration: none;
+        }
+        .custom-link:hover {
+            color: #217772;
+            text-decoration: none;
+        }
+      /* Efecto de hover */
+      .square:hover {
+        color: rgb(255, 255, 255); /* Texto negro al hacer hover */
+      }
+      @media (max-width: 700px) {
+        /* Para pantallas menores a 576px */
+        .custom-navbar {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+        <div class="container-fluid">
+          <!-- Imagen a la izquierda -->
+          <a
+            class="navbar-brand"
+            href="index.html"
+            style="display: flex; align-items: center"
+          >
+            <img
+              src="Imagenes/logo_1.png"
+              alt="Mi Sitio Logo"
+              style="width: 100%; margin-right: 10px"
+            />
+            <div>
+              <h1 class="d-none d-sm-block" style="font-size: 34px; margin: 0">
+                Innovación Tecnológica
+              </h1>
+              <h5 class="d-none d-sm-block" style="font-size: 14px; margin: 0">
+                EN LA EDUCACIÓN LINGÜÍSTICA
+              </h5>
+              <h1 class="d-block d-sm-none" style="font-size: 34px; margin: 0">
+                ITEL
+              </h1>
+            </div>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Opciones de navegación a la derecha -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto text-center">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="#"
+                  onclick="loadContent('Header/Juegos.html')"
+                >
+                  <i class="fas fa-gamepad icon-text" style="color: #e1306c"></i
+                  ><br /><span class="icon-text" style="color: #e1306c"
+                    >JUEGOS</span
+                  >
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="#"
+                  onclick="loadContent('Header/Lecturas.html')"
+                >
+                  <i
+                    class="fa-solid fa-book icon-text"
+                    style="color: #6a9997"
+                  ></i
+                  ><br /><span class="icon-text" style="color: #6a9997"
+                    >LECTURAS</span
+                  >
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="#"
+                  onclick="loadContent('opcion3.html')"
+                >
+                  <i
+                    class="fa-solid fa-film icon-text"
+                    style="color: orange"
+                  ></i
+                  ><br /><span class="icon-text" style="color: orange"
+                    >VIDEOS</span
+                  >
+                </a>
+              </li>
+              <li class="nav-item"></li>
+                <a
+                  class="nav-link"
+                  href="#"
+                  onclick="loadContent('Header/Temarios.html')"
+                >
+                  <i
+                    class="fa-solid fa-book icon-text"
+                    style="color: #eb650c"
+                  ></i
+                  ><br /><span class="icon-text" style="color: #eb650c"
+                    >TEMARIOS</span
+                  >
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div id="content" class="container mt-5 pt-5">
+      <div class="content-section text-center">
+        <h3>Lecturas recomendadas por grado</h3>
+        <div
+          class="squares-container d-flex justify-content-center flex-wrap mt-4"
+        >
+          <button
+            class="square btn red"
+            onclick="window.location.href='grado1.html'"
+            data-color="red"
+          >
+            1
+          </button>
+          <button
+            class="square btn blue"
+            onclick="window.location.href='grado2.html'"
+            data-color="blue"
+          >
+            2
+          </button>
+          <button
+            class="square btn green"
+            onclick="window.location.href='grado3.html'"
+            data-color="green"
+          >
+            3
+          </button>
+          <button
+            class="square btn yellow"
+            onclick="window.location.href='grado4.html'"
+            data-color="yellow"
+          >
+            4
+          </button>
+          <button
+            class="square btn orange"
+            onclick="window.location.href='grado5.html'"
+            data-color="orange"
+          >
+            5
+          </button>
+          <button
+            class="square btn purple"
+            onclick="window.location.href='grado6.html'"
+            data-color="purple"
+          >
+            6
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="carouselExampleControlsNoTouching"
+        class="carousel slide"
+        data-bs-touch="false"
+        data-bs-interval="false"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <a
+              href="javascript:void(0);"
+              onclick="window.open('https://www.ingenieria.unam.mx/dcsyhfi/material_didactico/Literatura_Hispanoamericana_Contemporanea/Autores_Q/QUIROGA/plumas.pdf', '_blank');"
+            >
+              <img
+                src="Imagenes/Carrucel/carrucel1.jpg"
+                class="d-block w-100"
+                alt="..."
+                style="height: 400px; object-fit: cover"
+              />
+            </a>
+            <div class="carousel-caption d-none d-md-block text-center">
+              <h5 style="color: #e2111b">El Almuhadón de Plumas</h5>
+              <p class="lead">
+                Alicia apoyaba la cabeza, tenía manchas de sangre. La sirvienta
+                llamó extrañada a Jordán. Él llegó rápido y vio dos pequeñas
+                manchas de sangre.
+              </p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <a
+              href="javascript:void(0);"
+              onclick="window.open('https://www.ingenieria.unam.mx/dcsyhfi/material_didactico/Literatura_Hispanoamericana_Contemporanea/Autores_Q/QUIROGA/gallina.pdf');"
+            >
+              <img
+                src="Imagenes/Carrucel/carrucel2.jpg"
+                class="d-block w-100"
+                alt="..."
+                style="height: 400px; object-fit: cover"
+              />
+            </a>
+            <div class="carousel-caption d-none d-md-block text-center">
+              <h5 style="color: burlywood">La Gallina Degollada</h5>
+              <p class="lead">
+                En este, un joven matrimonio sufre la desgracia de tener cuatro
+                hijos idiotas. Nace el primero, y a los dieciocho meses sufre
+                una fiebre y luego la enfermedad degenerativa. Así nacen los
+                demás niños, con igual padecimiento.
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <a
+              href="javascript:void(0);"
+              onclick="window.open('https://www.ingenieria.unam.mx/dcsyhfi/material_didactico/Literatura_Hispanoamericana_Contemporanea/Autores_G/GARCIA/vine.pdf');"
+            >
+              <img
+                src="Imagenes/Carrucel/carrucel3.jpg"
+                class="d-block w-100"
+                alt="..."
+                style="height: 400px; object-fit: cover"
+              />
+            </a>
+            <div class="carousel-caption d-none d-md-block text-center">
+              <h5>Solo vine a hablar por teléfono</h5>
+              <p class="lead">
+                Se narra la historia de María de la Luz Cervantes, una mexicana
+                de veintisiete años que alquila un vehículo para ir a visitar a
+                sus parientes en Zaragoza y sufre una avería en el Desierto de
+                los Monegros.
+              </p>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev custom-control"
+          type="button"
+          data-bs-target="#carouselExampleControlsNoTouching"
+          data-bs-slide="prev"
+        >
+          <span class="custom-icon"><i class="fas fa-chevron-left"></i></span>
+          <!-- Icono de flecha izquierda -->
+        </button>
+        <button
+          class="carousel-control-next custom-control"
+          type="button"
+          data-bs-target="#carouselExampleControlsNoTouching"
+          data-bs-slide="next"
+        >
+          <span class="custom-icon"><i class="fas fa-chevron-right"></i></span>
+          <!-- Icono de flecha derecha -->
+        </button>
+      </div>
+      <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <h3>Lecturas para 5to de Secundaria</h3>
+            <a class="nav-link" href="#" onclick="loadContent('Header/Lecturas.html')">
+              <span class="icon-text" style="color: #6a9997">MÁS LECTURAS</span>
+            </a>            
+        </div>
+        <hr>
+        <div class="container mt-5 d-flex justify-content-center">
+            <div class="row g-4">
+                <div class="col-md-4 d-flex justify-content-center mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="Imagenes/Lecturas5to/LaCasadelosEspiritus.jpg" alt="La Casa de los Espíritus" style="width: 100%; height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">La Casa de los Espíritus</h5>
+                            <p class="card-text">Una obra de Isabel Allende que explora la historia y la magia a través de varias generaciones.</p>
+                            <a href="https://www.suneo.mx/literatura/subidas/Isabel%20Allende%20La%20Casa%20de%20los%20Esp%C3%ADritus.pdf" class="btn btn-default">Leer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="Imagenes/Lecturas5to/CienAñosdeSoledad.jpg" alt="Cien Años de Soledad" style="width: 100%; height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Cien Años de Soledad</h5>
+                            <p class="card-text">La historia de la familia Buendía escrita por Gabriel García Márquez.</p>
+                            <a href="https://www.secst.cl/upfiles/documentos/19072016_1207am_578dc39115fe9.pdf" class="btn btn-default">Leer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 d-flex justify-content-center mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="Imagenes/Lecturas5to/CronicaMuerteA.webp" alt="La Chaskañawi" style="width: 100%; height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Cronica de una Muerte Anunciada</h5>
+                            <p class="card-text">Novela corta publicada en 1981, escrita por Gabriel García.</p>
+                            <a href="https://unisinucartagena.edu.co/wp-content/uploads/2020/07/Cronica_de_una_Muerte_Anunciada-Gabriel_Garcia_Marquez.pdf" class="btn btn-default">Leer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+      <div class="d-flex justify-content-between align-items-center">
+          <h3>Lecturas para 6to de Secundaria</h3>
+          <a href="#" class="custom-link">MÁS LECTURAS</a>
+      </div>
+      <hr>
+      <div class="container mt-5 d-flex justify-content-center">
+          <div class="row g-4">
+              <div class="col-md-4 d-flex justify-content-center mb-4">
+                  <div class="card" style="width: 18rem;">
+                      <img class="card-img-top" src="Imagenes/Lecturas6to/AmericanVisa.jpeg" alt="La Casa de los Espíritus" style="width: 100%; height: 250px; object-fit: cover;">
+                      <div class="card-body">
+                          <h5 class="card-title">American Visa</h5>
+                          <p class="card-text">Un profesor boliviano se ve involucrado en serios crímenes tras haber sido negada su entrada a los Estados Unidos.                          </p>
+                          <a href="https://es.scribd.com/document/715368648/American-Visa-Recacoechea-Juan-de-1994-La-Paz-u-a-Ed-Los-Amigos-Del-Libro-2f8fd393fb53c0bf8e4cea60d370c790-Anna-s-Archive" class="btn btn-default">Leer</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 d-flex justify-content-center mb-4">
+                  <div class="card" style="width: 18rem;">
+                      <img class="card-img-top" src="Imagenes/Lecturas6to/CercodePenunbras.jpg" alt="Cien Años de Soledad" style="width: 100%; height: 250px; object-fit: cover;">
+                      <div class="card-body">
+                          <h5 class="card-title">Cerco de Penunbras</h5>
+                          <p class="card-text">Obra con doce cuentos que se enmarcan dentro el género fantástico. Se explora situaciones irreales.</p>
+                          <a href="https://www.andesacd.org/wp-content/uploads/2019/02/Cerco-de-Penumbras.pdf" class="btn btn-default">Leer</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 d-flex justify-content-center mb-4">
+                  <div class="card" style="width: 18rem;">
+                      <img class="card-img-top" src="Imagenes/Lecturas6to/LaChaskañawi.jpg" alt="La Chaskañawi" style="width: 100%; height: 250px; object-fit: cover;">
+                      <div class="card-body">
+                          <h5 class="card-title">La Chaskañawi</h5>
+                          <p class="card-text">Una novela boliviana de Carlos Medinaceli que narra la vida en el Altiplano andino en diversas situaciones.</p>
+                          <a href="https://joya777.wordpress.com/wp-content/uploads/2011/11/lachaskac3b1awijy7.pdf" class="btn btn-default">Leer</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center">
+        <h3>Juegos con temas para 5to</h3>
+        <a href="#" class="custom-link">MÁS JUEGOS</a>
+    </div>
+    <hr>
+    <div class="row mb-4"> <!-- Añadir una fila para el diseño de columnas -->
+        <div class="col-md-4 d-flex justify-content-center mb-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="Imagenes/Juegos/PasaPalabras.png" alt="Pasa Palabras" style="width: 100%; object-fit: cover;">
+                <div class="card-body"> <!-- Añadir text-center para centrar el texto -->
+                    <h5 class="card-title">Pasa Palabras</h5>
+                    <p class="card-text">El pasapalabra es un rosco con todas las letras del alfabeto que se irán poniendo rojas o verdes en función de si respondes correctamente o no a las preguntas.</p>
+                    <a href="Header/PasaPalabras/index.html" class="btn btn-default">Jugar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center mb-4">
+          <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="Imagenes/Juegos/CruciMundo.avif" alt="Pasa Palabras" style="width: 100%; object-fit: cover;">
+              <div class="card-body"> <!-- Añadir text-center para centrar el texto -->
+                  <h5 class="card-title">Cruci Mundo</h5>
+                  <p class="card-text">El pasapalabra es un rosco con todas las letras del alfabeto que se irán poniendo rojas o verdes en función de si respondes correctamente o no a las preguntas.</p>
+                  <a href="https://es.scribd.com/document/715368648/American-Visa-Recacoechea-Juan-de-1994-La-Paz-u-a-Ed-Los-Amigos-Del-Libro-2f8fd393fb53c0bf8e4cea60d370c790-Anna-s-Archive" class="btn btn-default">Jugar</a>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4 d-flex justify-content-center mb-4">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="Imagenes/Juegos/PasaPalabras.png" alt="Pasa Palabras" style="width: 100%;object-fit: cover;">
+            <div class="card-body"> <!-- Añadir text-center para centrar el texto -->
+                <h5 class="card-title">Pasa Palabras</h5>
+                <p class="card-text">El pasapalabra es un rosco con todas las letras del alfabeto que se irán poniendo rojas o verdes en función de si respondes correctamente o no a las preguntas.</p>
+                <a href="https://es.scribd.com/document/715368648/American-Visa-Recacoechea-Juan-de-1994-La-Paz-u-a-Ed-Los-Amigos-Del-Libro-2f8fd393fb53c0bf8e4cea60d370c790-Anna-s-Archive" class="btn btn-default">Jugar</a>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+    </div>
+    <footer class="custom-footer text-white text-center py-3 fixed-bottom">
+      <p class="mb-0">© 2024 ITEL. Todos los derechos reservados.</p>
+      <p class="mb-0 d-flex justify-content-center align-items-center">
+        <a href="https://www.facebook.com/profile.php?id=61558409127822" class="text-white mr-3" target="_blank">
+          <img src="Imagenes/Logo_CLLC.png" alt="Imagen 1" style="width: 54px; height: 54px;">
+        </a>
+        <span class="mr-4">
+          Comunicación y Lenguajes:
+          Lengua Castellana
+        </span>
+        <a href="https://www.facebook.com/profile.php?id=100063850820618" class="text-white mr-3" target="_blank">
+          <img src="Imagenes/simon_rodriguez.png" alt="Imagen 2" style="width: 48px; height: 48px;">
+        </a>
+        <span class="mr-4">
+          ESFM Simón Rodríguez
+          U.A Villa Tunari
+        </span>
+      </p>
+    </footer>
+    <!-- Bootstrap y JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      
+      document.querySelectorAll(".square").forEach((button) => {
+        button.addEventListener("mouseover", () => {
+          const color = button.getAttribute("data-color");
+          button.style.backgroundColor = color; // Cambia el fondo al color correspondiente
+          button.style.color = "#fff"; // Cambia el texto a negro
+        });
+
+        button.addEventListener("mouseout", () => {
+          button.style.backgroundColor = "#1f1c1a"; // Vuelve el fondo a negro
+          const originalColor = button.getAttribute("data-color"); // Obtiene el color original del texto
+          button.style.color = originalColor; // Restaura el color del texto
+        });
+      });
+      // Función para cargar contenido dinámico
+      function loadContent(page) {
+        fetch(page)
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("content").innerHTML = data;
+          })
+          .catch((error) => console.log("Error al cargar contenido:", error));
+      }
+    </script>
+  </body>
+</html>
